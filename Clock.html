@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+</head>
+<body style="background: black; color: red; padding: 0; margin: 0;">
+    <h1 id="mainsubstitution" style="align-items: center; justify-content: center; display: flex; height: 100vh; width: 100%; font-size: 140px;">visible</h1>
+    
+
+    <script>
+        
+        function clockitem()
+        {
+        let dateobj=new Date;
+        let hour=dateobj.getHours();
+        let ampm;
+        if(hour>=12)
+        {
+            ampm="PM";
+        }
+        else{
+            ampm="AM";
+        }
+        
+        hour=hour%12;
+        hour = (hour==0)?12:hour;
+        hour=hour>9 ? hour :'0' + hour;
+       
+        let minutes=dateobj.getMinutes();
+        minutes = minutes > 9 ? minutes:'0'+ minutes;
+        
+        let secconds=dateobj.getSeconds();
+        secconds=secconds> 9 ? secconds: '0'+secconds;
+
+        return `${hour} : ${minutes} : ${secconds} : ${ampm}`;
+        };
+       
+
+        setInterval(function(){
+            let ms=document.getElementById("mainsubstitution");
+            ms.innerHTML=clockitem();
+        },1000);
+
+
+    </script>
+   
+</body>
+</html>
